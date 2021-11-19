@@ -39,7 +39,8 @@ jobs:
       - name: Find Java version
         run: java -version
 
-      debug-job:
+  debug-job:
+        runs-on: ubuntu-latest
         steps:
           - name: Dump GitHub context
             env:
