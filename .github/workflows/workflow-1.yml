@@ -25,7 +25,7 @@ jobs:
 
 
       - id: foo
-        uses: ./.github/actions/action-1
+        uses: ./.github/actions/actiondemo
         with:
           who-to-greet: 'Mona the Octocat'
 
