@@ -25,7 +25,7 @@ jobs:
 
 
       - id: foo
-        uses: actions/action-1
+        uses: actions/action-1@v1
         with:
           who-to-greet: 'Mona the Octocat'
 
