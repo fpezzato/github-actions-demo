@@ -24,7 +24,7 @@ jobs:
       - uses: ./.github/actions/checkout@v2
 
       - name: My first step
-        uses: ./.github/actions
+        uses: ./.github/actions/my-action
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
