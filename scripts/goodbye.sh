@@ -1,1 +1,1 @@
-echo "Goodbye"
+echo "I am an echo in a script"

@@ -7,10 +7,14 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   prod-check:
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' &&  github.repository == 'fpezzato/github-actions-demo'}}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - uses: actions/checkout@v2
+
+      - name: My first step
+        uses: ./.github/actions/publish
 
 
   # This workflow contains a single job called "build"
