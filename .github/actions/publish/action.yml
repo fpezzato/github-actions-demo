@@ -1,0 +1,7 @@
+name: 'Publish artifact'
+description: 'Publish some artifact'
+runs:
+  using: "composite"
+  steps:
+    - run: I am an action ready to publish
+      shell: bash
