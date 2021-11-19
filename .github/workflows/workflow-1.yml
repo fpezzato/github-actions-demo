@@ -23,6 +23,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+
+      - id: foo
+        uses: actions/hello-world-composite-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Current propertie GITHUB_REF=$GITHUB_REF,GITHUB_REF_NAME=$GITHUB_REF_NAME, GITHUB_REPOSITORY=$GITHUB_REPOSITORY
