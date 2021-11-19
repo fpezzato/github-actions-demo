@@ -24,10 +24,10 @@ jobs:
       - uses: actions/checkout@v2
 
 
-      - id: foo
-        uses: ./.github/actions/actiondemo
-        with:
-          who-to-greet: 'Mona the Octocat'
+      runs:
+        using: "composite"
+        steps:
+          - uses: ./.github/actions/my-action
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
