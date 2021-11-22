@@ -5,5 +5,4 @@ runs:
   steps:
     - run: |
           echo I am an action ready to publish
-          ../../scripts/goodbye.sh
       shell: bash
