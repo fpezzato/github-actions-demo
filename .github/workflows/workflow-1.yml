@@ -54,7 +54,13 @@ jobs:
   access-secrets:
     runs-on: ubuntu-latest
     steps:
-      - name: Access ENVIRONMENT_1_SECRET_1_KEY and SECRET_2_KEY
+      - name: Access SECRET_2_KEY
+        env:
+            SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
+        run: cat SECRET_2_KEY
+        shell: bash
+
+      - name: Access ENVIRONMENT_1_SECRET_1_KEY
         env:
           ENVIRONMENT_1_SECRET_1_KEY: ${{ secrets.ENVIRONMENT_1_SECRET_1_KEY }}
         run: cat ENVIRONMENT_1_SECRET_1_KEY
