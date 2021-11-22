@@ -76,7 +76,7 @@ jobs:
       - name: Run a script
         run: |
           echo $PWD
-          ./scripts/goodbye.sh
+          sh ./scripts/goodbye.sh
         shell: bash
 
 
