@@ -35,9 +35,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: My first step
-        env:
-          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
-          run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
         uses: ./.github/actions/publish
 
       # Runs a single command using the runners shell
@@ -76,6 +73,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - env:
+          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+        run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
       - name: Run a script
         run: |
           echo $PWD
