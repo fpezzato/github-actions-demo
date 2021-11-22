@@ -24,13 +24,6 @@ jobs:
           GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
         run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
 
-  use_java_openjdk:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: AdoptOpenJDK/install-jdk@v1
-          with:
-            version: '8'
-          run: java -version
 
 # This workflow contains a single job called "build"
   publish-artifact:
