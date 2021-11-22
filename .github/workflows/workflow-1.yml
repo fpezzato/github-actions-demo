@@ -17,10 +17,12 @@ jobs:
         uses: ./.github/actions/publish
 
   env-variables:
+    runs-on: ubuntu-latest
     steps:
-    env:
-      GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
-    run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
+      - name: Set an env variable
+        env:
+          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+        run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
 
 
   # This workflow contains a single job called "build"
