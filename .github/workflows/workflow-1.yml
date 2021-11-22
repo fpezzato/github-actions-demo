@@ -16,6 +16,12 @@ jobs:
       - name: My first step
         uses: ./.github/actions/publish
 
+  env-variables:
+    steps:
+    env:
+      GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+    run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
+
 
   # This workflow contains a single job called "build"
   publish-artifact:
