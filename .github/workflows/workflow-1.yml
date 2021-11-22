@@ -70,7 +70,12 @@ jobs:
         run: echo $ENVIRONMENT_1_SECRET_1_KEY
         shell: bash
 
-
+  run-scrpipt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a script
+        run: scripts/goodbye.sh
+        shell: bash
 
 
   debug-job:
