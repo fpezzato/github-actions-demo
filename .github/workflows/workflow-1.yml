@@ -57,7 +57,8 @@ jobs:
       - name: Access ENVIRONMENT_1_SECRET_1_KEY and SECRET_2_KEY
         env:
           ENVIRONMENT_1_SECRET_1_KEY: ${{ secrets.ENVIRONMENT_1_SECRET_1_KEY }}
-          run: cat ENVIRONMENT_1_SECRET_1_KEY
+        run: cat ENVIRONMENT_1_SECRET_1_KEY
+        shell: bash
 
 
 
