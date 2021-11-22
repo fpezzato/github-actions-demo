@@ -76,7 +76,7 @@ jobs:
       - name: Run a script
         run: |
           echo $PWD
-          ls ./scripts
+          ls scripts
         shell: bash
 
 
