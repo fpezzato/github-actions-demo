@@ -22,6 +22,7 @@ jobs:
       - name: Set an env variable
         env:
           GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+          JAVA_VERSION: ${{ System.getProperty('java.version') }}
         run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
 
 
