@@ -18,13 +18,13 @@ set -e
 
 echo "GITHUB_IS_PULL_REQUEST"=$GITHUB_IS_PULL_REQUEST
 if [ "$GITHUB_IS_PULL_REQUEST" == "false" ]; then
-  echo $GITHUB_IS_PULL_REQUEST == false
+  echo "$GITHUB_IS_PULL_REQUEST == false"
 fi
 
 if [ "$GITHUB_IS_PULL_REQUEST" == "true" ]; then
-  echo $GITHUB_IS_PULL_REQUEST == true as string
+  echo "$GITHUB_IS_PULL_REQUEST == true as string"
 fi
 
 if [ "$GITHUB_IS_PULL_REQUEST" == true ]; then
-  echo $GITHUB_IS_PULL_REQUEST == true as bool
+  echo "$GITHUB_IS_PULL_REQUEST == true as bool"
 fi
