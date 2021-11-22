@@ -57,13 +57,13 @@ jobs:
       - name: Access SECRET_2_KEY
         env:
             SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
-        run: cat $SECRET_2_KEY
+        run: echo $SECRET_2_KEY
         shell: bash
 
       - name: Access ENVIRONMENT_1_SECRET_1_KEY
         env:
           ENVIRONMENT_1_SECRET_1_KEY: ${{ secrets.ENVIRONMENT_1_SECRET_1_KEY }}
-        run: cat $ENVIRONMENT_1_SECRET_1_KEY
+        run: echo $ENVIRONMENT_1_SECRET_1_KEY
         shell: bash
 
 
