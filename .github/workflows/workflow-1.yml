@@ -73,13 +73,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - env:
-          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
-        run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
       - name: Run a script
         run: |
           echo $PWD
           ./scripts/goodbye.sh
+        env:
+          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
         shell: bash
 
 
