@@ -60,9 +60,13 @@ jobs:
         run: echo $SECRET_2_KEY
         shell: bash
 
+  access-environment_1_secrets:
+    runs-on: ubuntu-latest
+    environment: ENVIRONMENT_1
+    steps:
       - name: Access ENVIRONMENT_1_SECRET_1_KEY
         env:
-          ENVIRONMENT_1_SECRET_1_KEY: ${{ secrets.ENVIRONMENT_1.ENVIRONMENT_1_SECRET_1_KEY }}
+          ENVIRONMENT_1_SECRET_1_KEY: ${{ secrets.ENVIRONMENT_1_SECRET_1_KEY }}
         run: echo $ENVIRONMENT_1_SECRET_1_KEY
         shell: bash
 
