@@ -62,7 +62,7 @@ jobs:
 
   access-environment_1_secrets:
     runs-on: ubuntu-latest
-    environment: ENVIRONMENT_1
+    environment: Environment1
     steps:
       - name: Access ENVIRONMENT_1_SECRET_1_KEY
         env:
