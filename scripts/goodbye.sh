@@ -16,7 +16,7 @@ set -e
 #  echo "Skipping snapshot deployment: wrong branch. Expected '$BRANCH' but was '$GITHUB_REF_NAME'."
 #fi
 
-echo "GITHUB_IS_PULL_REQUEST"=$GITHUB_IS_PULL_REQUEST
+echo "GITHUB_IS_PULL_REQUEST=$GITHUB_IS_PULL_REQUEST"
 if [ "$GITHUB_IS_PULL_REQUEST" == "false" ]; then
   echo "$GITHUB_IS_PULL_REQUEST == false"
 fi
