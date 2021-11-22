@@ -74,7 +74,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run a script
-        uses: ./
         run: ./scripts/goodbye.sh
         shell: bash
 
