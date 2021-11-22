@@ -51,6 +51,16 @@ jobs:
       - name: Find Java version
         run: java -version
 
+  access-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Access ENVIRONMENT_1_SECRET_1_KEY
+        run: echo ENVIRONMENT_1_SECRET_1_KEY=$ENVIRONMENT_1_SECRET_1_KEY
+
+      - name: Access SECRET_2_KEY
+        run: echo SECRET_2_KEY=$SECRET_2_KEY
+
+
   debug-job:
         runs-on: ubuntu-latest
         steps:
