@@ -53,7 +53,7 @@ jobs:
 
   access-secrets:
     runs-on: ubuntu-latest
-    if: ${{ ENVIRONMENT_1_SECRET_1_KEY != '' && SECRET_2_KEY != ''}}
+    if: ${{ secrets.ENVIRONMENT_1_SECRET_1_KEY != '' && secrets.SECRET_2_KEY != ''}}
     steps:
       - name: Access ENVIRONMENT_1_SECRET_1_KEY and SECRET_2_KEY
         run: echo Secrets available!
