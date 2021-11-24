@@ -62,11 +62,19 @@ jobs:
   access-secrets-from-gradle:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+            java-version: '8'
+            distribution: 'adopt'
+            cache: gradle
       - name: Access SECRET_2_KEY from Gradle
         env:
           SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
         run: ./gradlew  -q printVariables
         shell: bash
+
+
   access-environment_1_secrets:
     runs-on: ubuntu-latest
     environment: Environment1
