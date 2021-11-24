@@ -59,6 +59,14 @@ jobs:
         run: echo $SECRET_2_KEY
         shell: bash
 
+  access-secrets-from-gradle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Access SECRET_2_KEY from Gradle
+        env:
+          SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
+        run: ./gradlew  -q printVariables
+        shell: bash
   access-environment_1_secrets:
     runs-on: ubuntu-latest
     environment: Environment1

@@ -1,0 +1,9 @@
+apply plugin: 'idea'
+
+abstract class VariablesPrinter extends DefaultTask {
+    @TaskAction
+    def printVariables() {
+        println "hasProperty('SECRET_2_KEY') = ${hasProperty('SECRET_2_KEY')}"
+    }
+}
+tasks.register('printVariables', VariablesPrinter)
