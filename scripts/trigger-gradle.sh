@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "From the .sh: $SECRET_2_KEY"
-./gradlew -PMY_KEY=MyValue -PSECRET_2_KEY=$SECRET_2_KEY printVariables
+./gradlew printVariables -PMY_KEY=MyValue -PSECRET_2_KEY=$SECRET_2_KEY
