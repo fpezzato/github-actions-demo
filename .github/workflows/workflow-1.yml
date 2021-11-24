@@ -1,0 +1,119 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  prod-check:
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' &&  github.repository == 'fpezzato/github-actions-demo'}}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - uses: actions/checkout@v2
+
+      - name: My first step
+        uses: ./.github/actions/publish
+
+  env-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set an env variable
+        env:
+          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+        run: echo "GITHUB_IS_PULL_REQUEST =  $GITHUB_IS_PULL_REQUEST"
+
+
+# This workflow contains a single job called "build"
+  publish-artifact:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: My first step
+        uses: ./.github/actions/publish
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Current propertie GITHUB_REF=$GITHUB_REF,GITHUB_REF_NAME=$GITHUB_REF_NAME, GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+      - name: Find Java version
+        run: java -version
+
+  access-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Access SECRET_2_KEY
+        env:
+            SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
+        run: echo $SECRET_2_KEY
+        shell: bash
+
+  access-secrets-from-gradle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+            java-version: '8'
+            distribution: 'adopt'
+            cache: gradle
+      - name: Access SECRET_2_KEY from Gradle
+        env:
+          SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
+        #run: ./gradlew  -q printVariables
+        run: |
+          echo "From the yml: $SECRET_2_KEY"
+          echo "SECRET_2_KEY=$SECRET_2_KEY"  > ./local.properties
+          echo "MY_KEY=MyKeyValueTest"  > ./local.properties
+          ./scripts/trigger-gradle.sh
+        shell: bash
+
+
+  access-environment_1_secrets:
+    runs-on: ubuntu-latest
+    environment: Environment1
+    steps:
+      - name: Access ENVIRONMENT_1_SECRET_1_KEY
+        env:
+          ENVIRONMENT_1_SECRET_1_KEY: ${{ secrets.ENVIRONMENT_1_SECRET_1_KEY }}
+        run: echo $ENVIRONMENT_1_SECRET_1_KEY
+        shell: bash
+
+  run-scrpipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a script
+        run: |
+          echo $PWD
+          ./scripts/goodbye.sh
+        env:
+          GITHUB_IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+        shell: bash
+
+
+  debug-job:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Dump GitHub context
+            env:
+              GITHUB_CONTEXT: ${{ toJSON(github) }}
+            run: echo "$GITHUB_CONTEXT"
+          - name: Dump job context
+            env:
+              JOB_CONTEXT: ${{ toJSON(job) }}
+            run: echo "$JOB_CONTEXT"
+  
+  
