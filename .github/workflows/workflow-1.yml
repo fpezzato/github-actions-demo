@@ -72,7 +72,8 @@ jobs:
       - name: Access SECRET_2_KEY from Gradle
         env:
           SECRET_2_KEY: ${{ secrets.SECRET_2_KEY }}
-        run: ./gradlew  -q printVariables
+        #run: ./gradlew  -q printVariables
+        run: ./scripts/trigger-gradle.sh
         shell: bash
 
 
