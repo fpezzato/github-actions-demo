@@ -75,8 +75,8 @@ jobs:
         #run: ./gradlew  -q printVariables
         run: |
           echo "From the yml: $SECRET_2_KEY"
-          echo "SECRET_2_KEY=$SECRET_2_KEY" | base64 -d > ./local.properties
-          echo "MY_KEY=MyKeyValueTest" | base64 -d > ./local.properties
+          echo "SECRET_2_KEY=$SECRET_2_KEY"  > ./local.properties
+          echo "MY_KEY=MyKeyValueTest"  > ./local.properties
           ./scripts/trigger-gradle.sh
         shell: bash
 
